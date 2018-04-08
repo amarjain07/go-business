@@ -1,0 +1,12 @@
+{
+  "name": "Go Business",
+  "description": "REST APIs for businesses",
+  "keywords": [
+    "go",
+    "mysql",
+    "REST",
+    "API"
+  ],
+  "website": "http://github.com/amarjain07/go-business",
+  "repository": "http://github.com/amarjain07/go-business"
+}
