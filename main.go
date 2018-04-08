@@ -58,7 +58,7 @@ func main() {
 
 	router.GET("/link/:mobile", func(c *gin.Context){
 		var mobile = c.Param("mobile")
-		stmt, err := db.Prepare("insert into code(id, code, mobile) values(?, ?, mobile)")
+		stmt, err := db.Prepare("insert into code(id, code) values(?, ?)")
 		defer stmt.Close()
 		if err != nil{
 			c.JSON(http.StatusOK, gin.H{"success": true, "code": 4003, "message": "Error sending sms"})
@@ -66,7 +66,7 @@ func main() {
 		}
 		var random = 1000 + rand.Intn(8999)
 		hash := getMD5Hash(mobile + time.Now().String())
-		_, err = stmt.Exec(hash, random, mobile)
+		_, err = stmt.Exec(hash, random)
 		if err != nil{
 			c.JSON(http.StatusOK, gin.H{"success": true, "code": 4003, "message": "Error sending sms"})
 			return
