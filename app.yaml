@@ -1,0 +1,22 @@
+runtime: go
+env: flex
+api_version: go1
+
+handlers:
+- url: /.*
+  script: _go_app
+
+manual_scaling:
+  instances: 1
+resources:
+  cpu: 1
+  memory_gb: 0.5
+  disk_size_gb: 10
+
+env_variables:
+  PORT: 8000
+  GIN_MODE: release
+  DATABASE_URL: root:ilaichi@unix(/cloudsql/go-business-206010:asia-south1:gofirst)/dbname
+
+beta_settings:
+  cloud_sql_instances: go-business-206010:asia-south1:gofirst
